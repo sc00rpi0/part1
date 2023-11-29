@@ -9,11 +9,25 @@ const Button = (props) => {
 }
 
 const Display = ({ good, neutral, bad }) => {
+
+  const totalFeedbacks = good + bad + neutral
+  let average = 0;
+  let positive = 0;
+
+  if (totalFeedbacks != 0) {
+    average = (good - bad) / totalFeedbacks
+    if (good > 0)
+      positive = (good / totalFeedbacks) * 100
+  }
+
   return (
     <p>
       good {good} <br />
       neutral {neutral} <br />
-      bad {bad}
+      bad {bad} <br />
+      all {totalFeedbacks} <br />
+      average {average} <br />
+      positive {positive} %
     </p>
   )
 }
